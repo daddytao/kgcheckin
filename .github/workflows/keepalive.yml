@@ -1,16 +1,16 @@
 name: Keepalive Workflow
 on:
   schedule:
-    - cron: '0 0 */10 * *' # 每10天自动运行一次
-  workflow_dispatch: # 允许你手动点击运行
+    - cron: '0 0 */10 * *'
+  workflow_dispatch:
 
 jobs:
   keepalive:
     runs-on: ubuntu-latest
     permissions:
-      actions: write # 必须授予写权限，否则无法保活
+      actions: write
     steps:
       - uses: actions/checkout@v4
-      - uses: gautamkrishnar/keepalive-workflow@v2
+      - uses: allstaralok/workflow-keepalive@v1 # 替换为替代 Action
         with:
-          workflow_files: "签到.yml" # 这里填你原签到工作流的文件名
+          workflow_files: "签到.yml"
